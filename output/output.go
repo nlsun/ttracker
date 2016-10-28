@@ -98,6 +98,7 @@ func (c logConfig) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, "could not decode hook request", http.StatusBadRequest)
 		log.WithError(err).Info("could not decode hook request")
+		return
 	}
 	err = c.LogHook(hreq.Value)
 	if err != nil {
